@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 export default function Form() {
@@ -31,24 +31,6 @@ export default function Form() {
     setError(validate(user));
     isSubmit(true);
   }
-
-  useEffect(() => {
-    if (Object.keys(error).length === 0 && submit) {
-      axios
-        .post("https://helpful-bass-wig.cyclic.app/", user)
-        .then((res) => console.log(res.data));
-
-      setUser({
-        name: "",
-        age: "",
-        gender: "",
-        contact: "",
-        fee: "",
-        slot: "",
-      });
-      setSuccess(true);
-    }
-  }, [error]);
 
   const validate = (values) => {
     const errors = {};
