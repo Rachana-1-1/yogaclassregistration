@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Form() {
@@ -31,6 +31,24 @@ export default function Form() {
     setError(validate(user));
     isSubmit(true);
   }
+
+  useEffect(() => {
+    if (Object.keys(error).length === 0 && submit) {
+      axios
+        .post("", user)
+        .then((res) => console.log(res.data));
+
+      setUser({
+        name: "",
+        age: "",
+        gender: "",
+        contact: "",
+        fee: "",
+        slot: "",
+      });
+      setSuccess(true);
+    }
+  }, []);
 
   const validate = (values) => {
     const errors = {};
