@@ -48,7 +48,7 @@ export default function Form() {
       });
       setSuccess(true);
     }
-  }, []);
+  }, );
 
   const validate = (values) => {
     const errors = {};
